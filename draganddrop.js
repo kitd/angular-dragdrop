@@ -156,7 +156,7 @@
                     var transferDataObject = {data: dragData, channel: sendChannel, offset: offset};
                     var transferDataText = angular.toJson(transferDataObject);
 
-                    e.dataTransfer.setData('text', transferDataText);
+                    e.dataTransfer.setData('application/json', transferDataText);
                     e.dataTransfer.effectAllowed = 'copyMove';
 
                     $rootScope.$broadcast('ANGULAR_DRAG_START', e, sendChannel, transferDataObject);
@@ -274,7 +274,7 @@
                     e.stopPropagation(); // Necessary. Allows us to drop.
                 }
 
-                var sendData = e.dataTransfer.getData('text');
+                var sendData = e.dataTransfer.getData('application/json');
                 sendData = angular.fromJson(sendData);
 
                 var dropOffset = calculateDropOffset(e);
